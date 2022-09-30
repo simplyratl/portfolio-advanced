@@ -1,0 +1,13 @@
+.font-header {
+  font-family: "Readex Pro", sans-serif;
+}
+
+.list-item {
+  display: list-item;
+  list-style-type: "➦";
+  padding-inline-start: 1ch;
+
+  &::marker {
+    color: #dc2626;
+  }
+}

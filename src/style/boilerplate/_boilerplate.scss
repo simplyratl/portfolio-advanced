@@ -1,7 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@500;600;700&display=swap");
+
 * {
   cursor: none;
 }
 
 body {
   background-color: #181818;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Inter Tight", "San Francisco", "SF Pro Text", -apple-system, system-ui, sans-serif;
 }

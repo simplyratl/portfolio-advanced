@@ -172,6 +172,7 @@ const Hero = () => {
 
       <Canvas
         camera={{ position: [0, 0, 3] }}
+        legacy={effects ? false : true}
         gl={{
           powerPreference: "high-performance",
           alpha: false,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Cursor = () => {
   const [mousePos, setMousePos] = useState({
@@ -31,12 +31,12 @@ const Cursor = () => {
 
   return (
     <div className="cursor" style={{ top: mousePos.y, left: mousePos.x }}>
-      <div
+      <motion.div
         className="cursor-circle"
         variants={variants}
         animate="default"
         transition={{ ease: "easeOut", duration: 0.7 }}
-      ></div>
+      ></motion.div>
     </div>
   );
 };
