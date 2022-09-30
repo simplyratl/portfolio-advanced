@@ -1,0 +1,38 @@
+.cursor {
+  background-color: #313131;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 999;
+  pointer-events: none;
+}
+@media only screen and (max-device-width: 768px) {
+  .cursor {
+    display: none;
+  }
+}
+.cursor .cursor-circle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
+  border: 2px solid #313131;
+  border-radius: 50%;
+  z-index: 999;
+}
+
+* {
+  cursor: none;
+}
+
+body {
+  background-color: #181818;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*# sourceMappingURL=style.css.map */
