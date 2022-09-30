@@ -1,11 +1,14 @@
 import React, { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from "@react-three/postprocessing";
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette, ShockWave } from "@react-three/postprocessing";
 import {
+  CameraShake,
   Html,
   Icosahedron,
   MeshDistortMaterial,
+  MeshReflectorMaterial,
   OrbitControls,
+  Reflector,
   Stars,
   useCubeTexture,
   useTexture,
@@ -32,13 +35,16 @@ const Hero = () => {
   const MainSphere = ({ material }) => {
     const main = useRef();
 
-    // useFrame(({ clock, mouse }) => {
-    //   main.current.rotation.z = clock.getElapsedTime();
-    //   main.current.rotation.y = THREE.MathUtils.lerp(main.current.rotation.y, mouse.x * Math.PI, 0.1);
-    //   main.current.rotation.x = THREE.MathUtils.lerp(main.current.rotation.x, mouse.y * Math.PI, 0.1);
-    // });
+    // main sphere rotates following the mouse position
+    useFrame(({ clock, mouse }) => {
+      main.current.rotation.z = clock.getElapsedTime();
+      main.current.rotation.y = THREE.MathUtils.lerp(main.current.rotation.y, mouse.x * Math.PI, 0.1);
+      main.current.rotation.x = THREE.MathUtils.lerp(main.current.rotation.x, mouse.y * Math.PI, 0.1);
+    });
 
-    return <Icosahedron args={[1, 4]} ref={main} material={material} position={[0, 0, 0]} />;
+    return (
+      <Icosahedron args={[1, 4]} ref={main} material={material} position={[0, 0, 0]} toneMapped={false} />
+    );
   };
 
   function Instances({ material }) {
@@ -94,9 +100,32 @@ const Hero = () => {
     return <group ref={ref}>{children}</group>;
   }
 
+  function Ground(props) {
+    const [floor, normal] = useTexture([
+      "/model/reflections/surface_reflection.png",
+      "/model/reflections/surface_reflection_2.png",
+    ]);
+    return (
+      <mesh rotation={[-Math.PI / 2, 0, Math.PI / 2]} position={[0, -0.8, 2]} scale={20}>
+        <planeGeometry attach="geometry" args={[8, 8]} />
+        <MeshReflectorMaterial
+          color="#181818"
+          metalness={0}
+          mirror={1}
+          roughnessMap={floor}
+          normalMap={normal}
+          normalScale={[2, 2]}
+          mixStrength={20}
+          resolution={1024}
+          {...props}
+        />
+      </mesh>
+    );
+  }
+
   const Scene = () => {
     const normalMap = useTexture("/model/normal-map.png");
-    const envMap = useCubeTexture(["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"], {
+    const envMap = useCubeTexture(["px.png", "nx-1.png", "py-1.png", "ny.png", "pz.png", "nz-1.png"], {
       path: "/model/reflections/",
     });
 
@@ -109,15 +138,15 @@ const Hero = () => {
           envMap={envMap}
           bumpMap={normalMap}
           color={"#181818"}
-          roughness={0.1}
+          roughness={0.01}
           metalness={1}
           bumpScale={0.005}
-          clearcoat={1}
+          clearcoat={0.4}
           clearcoatRoughness={1}
           radius={1}
-          distort={0.4}
+          distort={0.5}
         />
-        {material && <MainSphere material={material} />}
+        {material && <Instances material={material} />}
       </>
     );
   };
@@ -125,7 +154,6 @@ const Hero = () => {
   return (
     <section className="h-[100vh]">
       <Canvas
-        legacy
         camera={{ position: [0, 0, 3] }}
         gl={{
           powerPreference: "high-performance",
@@ -136,20 +164,31 @@ const Hero = () => {
         }}
       >
         <color attach="background" args={["#181818"]} />
-        <fog color="#161616" attach="fog" near={8} far={30} />
+        <fog color="#161616" attach="fog" near={8} far={24} />
 
+        <ambientLight />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
 
         <Suspense fallback={<Html center>Loading.</Html>}>
           <Rig>
+            <Stars fade count={100} />
             <Scene />
+            <Ground />
           </Rig>
         </Suspense>
 
-        <EffectComposer multisampling={0} disableNormalPass={true} background={false}>
-          <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
+        <EffectComposer multisampling={8} background={false}>
+          <DepthOfField focalLength={0.02} bokehScale={2} height={480} />
+          <Bloom luminanceThreshold={0} luminanceSmoothing={0.4} intensity={3} height={300} />
+          <Noise opacity={0.025} />
+          <Vignette eskil={false} offset={0.1} darkness={0.6} />
+          <ShockWave />
         </EffectComposer>
+
+        <CameraShake yawFrequency={0.2} pitchFrequency={0.2} rollFrequency={0.2} />
       </Canvas>
+
+      <div className="fade absolute -bottom-8 w-full h-[200px]"></div>
     </section>
   );
 };

@@ -1,3 +1,8 @@
+.fade {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(180deg, rgba(2, 0, 36, 0) 0%, rgb(24, 24, 24) 80%);
+}
+
 .cursor {
   background-color: #313131;
   height: 8px;
