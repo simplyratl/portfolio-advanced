@@ -14,6 +14,7 @@ import {
   useTexture,
 } from "@react-three/drei";
 import * as THREE from "three";
+import { BsStars } from "react-icons/bs";
 
 export const Light = () => {
   const [mousePos, setMousePos] = useState({
@@ -32,6 +33,8 @@ export const Light = () => {
 };
 
 const Hero = () => {
+  const [effects, enableEffects] = useState(false);
+
   const MainSphere = ({ material }) => {
     const main = useRef();
 
@@ -116,7 +119,7 @@ const Hero = () => {
           normalMap={normal}
           normalScale={[2, 2]}
           mixStrength={20}
-          resolution={1024}
+          resolution={256}
           {...props}
         />
       </mesh>
@@ -152,7 +155,21 @@ const Hero = () => {
   };
 
   return (
-    <section className="h-[100vh]">
+    <section className="h-[100vh] relative">
+      <aside className="group absolute top-4 right-4 z-10 w-[38px] h-[38px]">
+        <button
+          type="button"
+          className="bg-red-600 w-full h-full flex justify-center items-center rounded-full cursor-none"
+          onClick={() => enableEffects(!effects)}
+        >
+          <BsStars color="white" size={24} />
+        </button>
+
+        <span className="absolute text-white z-10 top-11 right-0 text-xs w-[140px] text-right opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 ease-in-out">
+          Enable better effects for high-end pcs. Disabled by default.
+        </span>
+      </aside>
+
       <Canvas
         camera={{ position: [0, 0, 3] }}
         gl={{
@@ -173,17 +190,18 @@ const Hero = () => {
           <Rig>
             <Stars fade count={100} />
             <Scene />
-            <Ground />
+            {effects && <Ground />}
           </Rig>
         </Suspense>
 
-        <EffectComposer multisampling={8} background={false}>
-          <DepthOfField focalLength={0.02} bokehScale={2} height={480} />
-          <Bloom luminanceThreshold={0} luminanceSmoothing={0.4} intensity={3} height={300} />
-          <Noise opacity={0.025} />
-          <Vignette eskil={false} offset={0.1} darkness={0.6} />
-          <ShockWave />
-        </EffectComposer>
+        {effects && (
+          <EffectComposer multisampling={0}>
+            <DepthOfField focalLength={0.02} bokehScale={2} height={480} />
+            <Bloom luminanceThreshold={0} luminanceSmoothing={0.4} intensity={3} height={300} />
+            <Noise opacity={0.025} />
+            <Vignette eskil={false} offset={0.1} darkness={0.6} />
+          </EffectComposer>
+        )}
 
         <CameraShake yawFrequency={0.2} pitchFrequency={0.2} rollFrequency={0.2} />
       </Canvas>

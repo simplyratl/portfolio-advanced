@@ -24,11 +24,16 @@ const IntroductionWork = () => {
   };
 
   return (
-    <section className="mt-16">
-      <h1>Hello, I'm Nikica Raznatovic</h1>
+    <>
+      <section className="mt-16 max-w-[600px] mx-auto text-center text-[#81807f]">
+        <h1 className="font-semibold text-3xl">Hello, I'm Nikica Raznatovic</h1>
+        <p className="text-xl">I'm a {age} old Junior Frontend Developer from Montenegro.</p>
+      </section>
 
-      <p>I'm a {age} old Junior Frontend Developer from Montenegro.</p>
-    </section>
+      <section>
+        <h2>Most recent work</h2>
+      </section>
+    </>
   );
 };
 
