@@ -3,6 +3,12 @@
     "title": "Beatstore",
     "description": "A sophisticated project built with React js on the frontend and Node js on backend. Firebase is used to store audio and photos, and MongoDB is utilized to store JSON about beats.",
     "image": "/images/work/beatstore.png",
+    "technologies": ["React", "Node.js", "MongoDB", "Firebase", "Heroku"]
+  },
+  {
+    "title": "Beatstore",
+    "description": "A sophisticated project built with React js on the frontend and Node js on backend. Firebase is used to store audio and photos, and MongoDB is utilized to store JSON about beats.",
+    "image": "/images/work/beatstore.png",
     "technologies": ["React", "Node.js", "SCSS", "Netlify", "Heroku"]
   },
   {
