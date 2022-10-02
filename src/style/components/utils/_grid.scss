@@ -1,5 +1,9 @@
 .grid-12 {
   grid-template-columns: repeat(12, 1fr);
+
+  @media screen and (max-width: 800px) {
+    display: block !important;
+  }
 }
 
 .grid-image {

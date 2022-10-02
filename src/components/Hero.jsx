@@ -1,4 +1,7 @@
 import React, { Suspense, useRef, useState } from "react";
+import Lotie from "lottie-react";
+import scrollAnimation from "../assets/lottie/scroll.json";
+
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { EffectComposer, DepthOfField, Bloom, Noise, Vignette, ShockWave } from "@react-three/postprocessing";
 import {
@@ -97,8 +100,8 @@ const Hero = () => {
     const { camera, mouse } = useThree();
     useFrame(() => {
       camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05);
-      ref.current.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0), 0.1);
-      ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, (-mouse.x * Math.PI) / 20, 0.1);
+      ref.current.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0.2), 0.1);
+      ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, (-mouse.x * Math.PI) / 18, 0.1);
     });
     return <group ref={ref}>{children}</group>;
   }
@@ -207,6 +210,9 @@ const Hero = () => {
         <CameraShake yawFrequency={0.2} pitchFrequency={0.2} rollFrequency={0.2} />
       </Canvas>
 
+      <div className="absolute right-4 bottom-6 w-16 h-16 z-10 pointer-events-none">
+        <Lotie animationData={scrollAnimation} />
+      </div>
       <div className="fade absolute -bottom-8 w-full h-[200px]"></div>
     </section>
   );

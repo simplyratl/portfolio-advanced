@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import work from "../json/work.json";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -6,6 +6,8 @@ const IntroductionWork = () => {
   const [age, setAge] = useState(0);
   const [workCards, setWorkCards] = useState(work);
   const [itemsToShow, setItemsToShow] = useState(1);
+
+  const showMoreRef = useRef(null);
 
   useEffect(() => {
     caluclateAge();
@@ -25,9 +27,17 @@ const IntroductionWork = () => {
     return checkYear;
   };
 
+  useEffect(() => {
+    const showMore = () => {
+      showMoreRef.current.scrollIntoView({ block: "end", behavior: "smooth" });
+    };
+
+    showMore();
+  }, [itemsToShow]);
+
   return (
     <>
-      <section className="mt-16 max-w-[600px] mx-auto text-center text-[#81807f]">
+      <section className="mt-16 max-w-[600px] mx-auto text-center text-[#81807f] px-4">
         <h1 className="font-semibold text-3xl">Hello, I'm Nikica Raznatovic</h1>
         <p className="text-xl">I'm a {age} old Junior Frontend Developer from Montenegro.</p>
 
@@ -46,29 +56,30 @@ const IntroductionWork = () => {
         </ul>
       </section>
 
-      <section className="work max-w-[1020px] mx-auto mt-64 px-[20px]">
+      <section className="work max-w-[1020px] mx-auto mt-64 px-[20px] overflow-hidden">
         <h2 className="text-3xl text-[#81807f] mb-12 font-semibold font-header">Some things I've built</h2>
 
-        <div className="flex flex-col gap-y-24">
+        <div className="flex flex-col gap-y-24 last:gap-y-12">
           {workCards.slice(0, itemsToShow).map((work, index) => (
             <AnimatePresence>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.7 }}
                 className="grid gap-3 grid-12 items-center text-white"
                 key={index}
               >
                 <div
-                  className={`aspect-video h-full transition-all ease-in-out p-2 duration-200 saturate-0 hover:saturate-100 hover:p-0 ${
+                  className={`w-full transition-all ease-in-out scale-95 duration-200 saturate-0 hover:saturate-100 hover:scale-100 ${
                     index % 2 === 0 ? "grid-image-reverse" : "grid-image"
                   }`}
                 >
                   <a href="#" target="_blank">
                     <img
                       src={work.image}
-                      alt=""
-                      className="w-full h-full object-cover pointer-events-none select-none"
+                      alt={work.title}
+                      className="w-full h-full object-cover object-top pointer-events-none select-none"
                     />
                   </a>
                 </div>
@@ -95,7 +106,7 @@ const IntroductionWork = () => {
                   <ul
                     className={`flex ${
                       index % 2 === 0 ? "justify-start" : "justify-end"
-                    } gap-6 mt-2 font-mono text-sm`}
+                    } gap-6 mt-2 font-mono text-sm overflow-x-auto`}
                   >
                     {work.technologies.map((technology, index) => (
                       <li key={index} className="text-md text-gray-400 font-semibold">
@@ -108,20 +119,19 @@ const IntroductionWork = () => {
             </AnimatePresence>
           ))}
 
-          <button
-            type="button"
-            onClick={() => {
-              if (workCards.length >= work.length) {
-                setItemsToShow(itemsToShow + 1);
-              } else {
-                setItemsToShow(1);
-              }
-
-              document.body.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-            }}
-          >
-            {workCards.length >= work.length ? "Show less" : "Show more"}
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="button"
+              className="bg-red-600 px-4 py-2 rounded-md text-white mb-4 scroll-my-6 cursor-none"
+              onClick={() => {
+                if (itemsToShow < work.length) setItemsToShow(itemsToShow + 1);
+                else setItemsToShow(1);
+              }}
+              ref={showMoreRef}
+            >
+              {itemsToShow >= work.length ? "Show less" : "Show more"}
+            </button>
+          </div>
         </div>
       </section>
     </>

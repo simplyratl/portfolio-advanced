@@ -1,3 +1,4 @@
+import Contact from "./components/Contact";
 import Cursor from "./components/Cursor";
 import Hero from "./components/Hero";
 import IntroductionWork from "./components/IntroductionWork";
@@ -9,6 +10,7 @@ function App() {
       <Cursor />
       <Hero />
       <IntroductionWork />
+      <Contact />
     </main>
   );
 }
