@@ -23,18 +23,18 @@ const Introduction = () => {
   };
 
   return (
-    <section className="mt-16 max-w-[600px] mx-auto text-center text-[#81807f] px-4">
-      <h1 className="font-semibold text-3xl">Hello, I'm Nikica Raznatovic</h1>
-      <p className="text-xl mb-4">
+    <section className="mt-16 max-w-[600px] mx-auto text-center px-4">
+      <h1 className="font-semibold text-3xl text-heading">Hello, I'm Nikica Raznatovic</h1>
+      <p className="text-xl mb-4 text-heading-2">
         I'm a {age} old Junior Frontend Developer from Montenegro. I am currently styding at FIT, University
         of Mediteran in Podgorica.
       </p>
-      <p>Here are a few technologies I’ve been working with recently:</p>
+      <p className="text-color">Here are a few technologies I’ve been working with recently:</p>
 
       <motion.ul
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        className="flex justify-center gap-12 text-md mt-8 text-left"
+        className="text-color flex justify-center gap-12 text-md mt-8 text-left"
       >
         <div>
           <li className="list-item">Javascript (ES6+)</li>

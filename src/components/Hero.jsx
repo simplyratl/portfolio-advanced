@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from "react";
+import React, { Suspense, useContext, useRef, useState } from "react";
 import Lotie from "lottie-react";
 import scrollAnimation from "../assets/lottie/scroll.json";
 
@@ -17,6 +17,7 @@ import {
 } from "@react-three/drei";
 import * as THREE from "three";
 import Navbar from "./Navbar";
+import { LightModeContext } from "../context/lightModeContext/LightModeContext";
 
 export const Light = () => {
   const [mousePos, setMousePos] = useState({
@@ -37,6 +38,8 @@ export const Light = () => {
 const Hero = () => {
   const [effects, enableEffects] = useState(false);
   const [disableEffects, handleDisableEffects] = useState(false);
+
+  const { lightMode } = useContext(LightModeContext);
 
   const MainSphere = ({ material }) => {
     const main = useRef();
@@ -185,7 +188,7 @@ const Hero = () => {
           depth: false,
         }}
       >
-        <color attach="background" args={["#181818"]} />
+        <color attach="background" args={[`${lightMode ? "#fff" : "#181818"}`]} />
         <fog color="#161616" attach="fog" near={8} far={24} />
         <ambientLight />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
@@ -207,7 +210,7 @@ const Hero = () => {
         {!disableEffects && <CameraShake yawFrequency={0.2} pitchFrequency={0.2} rollFrequency={0.2} />}
       </Canvas>
 
-      <div className="absolute right-4 bottom-6 w-16 h-16 z-10 pointer-events-none">
+      <div className="absolute right-4 bottom-6 w-16 h-16 z-10 pointer-events-none background-white rounded-full">
         <Lotie animationData={scrollAnimation} />
       </div>
       <div className="fade absolute -bottom-8 w-full h-[200px]"></div>

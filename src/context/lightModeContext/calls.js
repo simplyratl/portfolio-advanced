@@ -1,4 +1,4 @@
-import { lightMode, darkMode, toggleMode } from "./LightModeActions";
+import { toggleMode } from "./LightModeActions";
 
 export const toggleLightMode = (dispatch) => {
   dispatch(toggleMode());

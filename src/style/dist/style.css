@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@500;600;700&display=swap");
 .fade {
   background: rgb(2, 0, 36);
-  background: linear-gradient(180deg, rgba(2, 0, 36, 0) 0%, rgb(24, 24, 24) 80%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--background) 80%);
 }
 
 .grid-12 {
@@ -120,29 +120,51 @@ body {
 .dark {
   --background: #181818;
   --text-color: #81807f;
+  --text-heading: #616161;
+  --text-heading-2: #a8a6a5;
   --white: #fff;
+  --gray: #949494;
   --primary: #d33333;
   --secondary: #910e0e;
 }
 
 .light {
   --background: #fff;
-  --text-color: #1f2223;
-  --white: #fff;
-  --primary: #f9d262;
-  --secondary: #ffe8b2;
+  --text-color: #3a3a3a;
+  --text-heading: #1f2223;
+  --text-heading-2: #57595a;
+  --white: #171717;
+  --gray: #696969;
+  --primary: #d33333;
+  --secondary: #910e0e;
 }
 
 .background {
   background-color: var(--background);
 }
 
+.background-white {
+  background-color: #000;
+}
+
 .text-color {
   color: var(--text-color);
 }
 
+.text-heading {
+  color: var(--text-heading);
+}
+
+.text-heading-2 {
+  color: var(--text-heading-2);
+}
+
 .white {
   color: var(--white);
+}
+
+.gray {
+  color: var(--gray);
 }
 
 .primary-bg {
@@ -167,6 +189,11 @@ body {
 
 .secondary-hover:hover {
   background-color: var(--secondary);
+}
+
+.scroll {
+  fill: var(--white);
+  stroke: var(--white);
 }
 
 @tailwind base;
