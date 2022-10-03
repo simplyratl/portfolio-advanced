@@ -3,18 +3,21 @@
     "title": "Beatstore",
     "description": "A sophisticated project built with React js on the frontend and Node js on backend. Firebase is used to store audio and photos, and MongoDB is utilized to store JSON about beats.",
     "image": "/images/work/beatstore.png",
-    "technologies": ["React", "Node.js", "MongoDB", "Firebase", "Heroku"]
+    "technologies": ["React", "Node.js", "MongoDB", "Firebase", "Heroku"],
+    "link": "https://ratlbeatz.netlify.app/"
   },
   {
     "title": "Netflix Clone",
     "description": "What more to say? Netflix clone made using React js. The main goal wasn't a functionality but a basic idea of learning to create a Netflix style interface. Watching videos isn't available because... 🏴‍☠️.",
     "image": "/images/work/netflix.png",
-    "technologies": ["React", "SCSS", "API"]
+    "technologies": ["React", "SCSS", "API"],
+    "link": "https://github.com/simplyratl/netflix-clone"
   },
   {
     "title": "2048",
     "description": "Popular classic game 2048, coded entirely in vanilla Javascript. But not in colors you are used to, but in a new more modern design and scheme. The goal of the game is to reach 2048 block, but it doesn't end there. You can continue playing and try to reach your newest high score!",
     "image": "/images/work/2048.png",
-    "technologies": ["HTML", "Javascript", "SCSS"]
+    "technologies": ["HTML", "Javascript", "SCSS"],
+    "link": "https://github.com/simplyratl/2048"
   }
 ]

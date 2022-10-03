@@ -3,12 +3,14 @@ import work from "../json/work.json";
 import { AnimatePresence, motion } from "framer-motion";
 
 const IntroductionWork = () => {
-  const [workCards, setWorkCards] = useState(work);
+  const [workCards, setWorkCards] = useState([]);
   const [itemsToShow, setItemsToShow] = useState(1);
 
   const showMoreRef = useRef(null);
 
   useEffect(() => {
+    setWorkCards(work);
+
     const showMore = () => {
       showMoreRef.current.scrollIntoView({ block: "end", behavior: "smooth" });
     };
@@ -37,7 +39,7 @@ const IntroductionWork = () => {
                     index % 2 === 0 ? "grid-image-reverse" : "grid-image"
                   }`}
                 >
-                  <a href="#" target="_blank">
+                  <a href={work.link} target="_blank" rel="noreferrer">
                     <img
                       src={work.image}
                       alt={work.title}
@@ -53,7 +55,7 @@ const IntroductionWork = () => {
                 >
                   <span className="text-sm text-red-400 font-mono">Featured Project</span>
                   <h2 className="text-2xl font-semibold mb-6">
-                    <a href="#" target="_blank" className="hover:text-red-600">
+                    <a href={work.link} target="_blank" rel="noreferrer" className="hover:text-red-600">
                       {work.title}
                     </a>
                   </h2>

@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 const Introduction = () => {
   const [age, setAge] = useState(0);
 
-  const caluclateAge = () => {
-    const now = new Date();
-    const age = new Date(2001, 9, 29);
-
-    return convertmili(now - age);
-  };
-
   useEffect(() => {
+    const caluclateAge = () => {
+      const now = new Date();
+      const age = new Date(2001, 9, 29);
+
+      return convertmili(now - age);
+    };
+
     caluclateAge();
   }, []);
 
