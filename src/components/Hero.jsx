@@ -3,7 +3,7 @@ import Lotie from "lottie-react";
 import scrollAnimation from "../assets/lottie/scroll.json";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { EffectComposer, DepthOfField, Bloom, Noise, Vignette, ShockWave } from "@react-three/postprocessing";
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from "@react-three/postprocessing";
 import {
   CameraShake,
   Html,
@@ -11,7 +11,6 @@ import {
   MeshDistortMaterial,
   MeshReflectorMaterial,
   OrbitControls,
-  Reflector,
   Stars,
   useCubeTexture,
   useTexture,

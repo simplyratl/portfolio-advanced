@@ -14,7 +14,7 @@ const Contact = () => {
       </button>
 
       <div className="mt-8 pb-10">
-        <a href="https://github.com/simplyratl/portfolio-advanced" target="_blank">
+        <a href="https://github.com/simplyratl/portfolio-advanced" target="_blank" rel="noreferrer">
           <BsGithub className="inline-block relative -top-[2px]" size={18} />
           <span className="inline-block ml-2">Source Code</span>
         </a>
