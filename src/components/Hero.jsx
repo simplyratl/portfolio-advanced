@@ -16,7 +16,7 @@ import {
   useTexture,
 } from "@react-three/drei";
 import * as THREE from "three";
-import { BsStars } from "react-icons/bs";
+import Navbar from "./Navbar";
 
 export const Light = () => {
   const [mousePos, setMousePos] = useState({
@@ -36,12 +36,15 @@ export const Light = () => {
 
 const Hero = () => {
   const [effects, enableEffects] = useState(false);
+  const [disableEffects, handleDisableEffects] = useState(false);
 
   const MainSphere = ({ material }) => {
     const main = useRef();
 
     // main sphere rotates following the mouse position
     useFrame(({ clock, mouse }) => {
+      if (disableEffects) return;
+
       main.current.rotation.z = clock.getElapsedTime();
       main.current.rotation.y = THREE.MathUtils.lerp(main.current.rotation.y, mouse.x * Math.PI, 0.1);
       main.current.rotation.x = THREE.MathUtils.lerp(main.current.rotation.x, mouse.y * Math.PI, 0.1);
@@ -69,6 +72,9 @@ const Hero = () => {
     // smaller spheres movement
     useFrame(() => {
       // animate each sphere in the array
+
+      if (disableEffects) return;
+
       sphereRefs.forEach((el) => {
         el.position.y += 0.02;
         if (el.position.y > 19) el.position.y = -18;
@@ -97,7 +103,10 @@ const Hero = () => {
     const ref = useRef();
     const vec = new THREE.Vector3();
     const { camera, mouse } = useThree();
+
     useFrame(() => {
+      if (disableEffects) return;
+
       camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05);
       ref.current.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0.2), 0.1);
       ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, (-mouse.x * Math.PI) / 18, 0.1);
@@ -158,19 +167,12 @@ const Hero = () => {
 
   return (
     <section className="h-[100vh] relative">
-      <aside className="group absolute top-4 right-4 z-10 w-[38px] h-[38px]">
-        <button
-          type="button"
-          className="bg-red-600 w-full h-full flex justify-center items-center rounded-full cursor-none"
-          onClick={() => enableEffects(!effects)}
-        >
-          <BsStars color="white" size={24} />
-        </button>
-
-        <span className="absolute text-white z-10 top-11 right-0 text-xs w-[140px] text-right opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 ease-in-out">
-          Enable better effects for high-end pcs. Disabled by default.
-        </span>
-      </aside>
+      <Navbar
+        effects={effects}
+        enableEffects={enableEffects}
+        disableEffects={disableEffects}
+        handleDisableEffects={handleDisableEffects}
+      />
 
       <Canvas
         camera={{ position: [0, 0, 3] }}
@@ -185,10 +187,8 @@ const Hero = () => {
       >
         <color attach="background" args={["#181818"]} />
         <fog color="#161616" attach="fog" near={8} far={24} />
-
         <ambientLight />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
-
         <Suspense fallback={<Html center>Loading.</Html>}>
           <Rig>
             <Stars fade count={100} />
@@ -196,7 +196,6 @@ const Hero = () => {
             {effects && <Ground />}
           </Rig>
         </Suspense>
-
         {effects && (
           <EffectComposer multisampling={0}>
             <DepthOfField focalLength={0.02} bokehScale={2} height={480} />
@@ -205,8 +204,7 @@ const Hero = () => {
             <Vignette eskil={false} offset={0.1} darkness={0.6} />
           </EffectComposer>
         )}
-
-        <CameraShake yawFrequency={0.2} pitchFrequency={0.2} rollFrequency={0.2} />
+        {!disableEffects && <CameraShake yawFrequency={0.2} pitchFrequency={0.2} rollFrequency={0.2} />}
       </Canvas>
 
       <div className="absolute right-4 bottom-6 w-16 h-16 z-10 pointer-events-none">

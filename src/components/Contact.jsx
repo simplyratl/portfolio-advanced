@@ -9,9 +9,13 @@ const Contact = () => {
         Feel free to contact me about any question, freelance or job opportunities!
       </p>
 
-      <button className="mt-12 border-2 border-red-600 px-6 py-3 rounded-md text-white mb-4 cursor-none hover:bg-red-600">
-        <a href="mailto:nikicaraznatovic123@gmail.com">Email me :)</a>
-      </button>
+      <div className="flex justify-center">
+        <button className="mt-12 border-2 border-red-600 px-6 py-3 rounded-md text-white mb-4 cursor-none hover:bg-red-600">
+          <a href="mailto:nikicaraznatovic123@gmail.com">
+            <span className="mr-[2px] relative -top-[1.6px]">✉️</span> Email me
+          </a>
+        </button>
+      </div>
 
       <div className="mt-8 pb-10">
         <a href="https://github.com/simplyratl/portfolio-advanced" target="_blank" rel="noreferrer">

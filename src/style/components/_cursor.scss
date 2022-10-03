@@ -1,5 +1,7 @@
 .cursor {
-  background-color: #313131;
+  --cursor-color: #81807f;
+
+  background-color: var(--cursor-color);
   height: 8px;
   width: 8px;
   border-radius: 50%;
@@ -17,7 +19,7 @@
     left: 0;
     width: 42px;
     height: 42px;
-    border: 2px solid #313131;
+    border: 2px solid var(--cursor-color);
     border-radius: 50%;
     z-index: 999;
   }
