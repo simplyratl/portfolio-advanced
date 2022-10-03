@@ -3,29 +3,10 @@ import work from "../json/work.json";
 import { AnimatePresence, motion } from "framer-motion";
 
 const IntroductionWork = () => {
-  const [age, setAge] = useState(0);
   const [workCards, setWorkCards] = useState(work);
   const [itemsToShow, setItemsToShow] = useState(1);
 
   const showMoreRef = useRef(null);
-
-  useEffect(() => {
-    caluclateAge();
-  }, []);
-
-  const caluclateAge = () => {
-    const now = new Date();
-    const age = new Date(2001, 9, 29);
-
-    return convertmili(now - age);
-  };
-
-  const convertmili = (mSeconds) => {
-    var checkYear = Math.floor(mSeconds / 31536000000);
-
-    setAge(checkYear);
-    return checkYear;
-  };
 
   useEffect(() => {
     const showMore = () => {
@@ -37,25 +18,6 @@ const IntroductionWork = () => {
 
   return (
     <>
-      <section className="mt-16 max-w-[600px] mx-auto text-center text-[#81807f] px-4">
-        <h1 className="font-semibold text-3xl">Hello, I'm Nikica Raznatovic</h1>
-        <p className="text-xl">I'm a {age} old Junior Frontend Developer from Montenegro.</p>
-
-        <p>Here are a few technologies I’ve been working with recently:</p>
-
-        <ul className="flex justify-center gap-12 text-md mt-8 text-left">
-          <div>
-            <li className="list-item">Javascript (ES6+)</li>
-            <li className="list-item">React</li>
-            <li className="list-item">Node.Js</li>
-          </div>
-          <div>
-            <li className="list-item">Typescript</li>
-            <li className="list-item">Java</li>
-          </div>
-        </ul>
-      </section>
-
       <section className="work max-w-[1020px] mx-auto mt-64 px-[20px] overflow-hidden">
         <h2 className="text-3xl text-[#81807f] mb-12 font-semibold font-header">Some things I've built</h2>
 
