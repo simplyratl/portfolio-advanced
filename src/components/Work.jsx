@@ -81,6 +81,8 @@ const IntroductionWork = () => {
           <a
             href="https://github.com/simplyratl?tab=repositories"
             className="text-color text-lg flex justify-center items-center gap-2 primary-text-hover"
+            target="_blank"
+            rel="noreferrer"
           >
             <span>More projects are on my github.</span>
             <BsGithub />

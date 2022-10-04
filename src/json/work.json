@@ -2,28 +2,28 @@
   {
     "title": "Beatstore",
     "description": "A sophisticated project built with React js on the frontend and Node js on backend. Firebase is used to store audio and photos, and MongoDB is utilized to store JSON about beats.",
-    "image": "/images/work/beatstore.png",
+    "image": "/images/work/beatstore.webp",
     "technologies": ["React", "Node.js", "MongoDB", "Firebase", "Heroku"],
     "link": "https://ratlbeatz.netlify.app/"
   },
   {
     "title": "IOS16 Preview Clone",
     "description": "Next level animation is expected by Apple, so I tried to recreate it in a best way I can. It's not the full preview, just a few sections, but it's close resembly to the original site.",
-    "image": "/images/work/apple.png",
+    "image": "/images/work/apple.webp",
     "technologies": ["React", "SCSS", "GSAP"],
     "link": "https://ios16-clone.netlify.app/"
   },
   {
     "title": "2048",
     "description": "Popular classic game 2048, coded entirely in vanilla Javascript. But not in colors you are used to, but in a new more modern design and scheme. The goal of the game is to reach 2048 block, but it doesn't end there. You can continue playing and try to reach your newest high score!",
-    "image": "/images/work/2048.png",
+    "image": "/images/work/2048.webp",
     "technologies": ["HTML", "Javascript", "SCSS"],
     "link": "https://2048-modern.netlify.app/"
   },
   {
     "title": "Netflix Clone",
     "description": "What more to say? Netflix clone made using React js. The main goal wasn't a functionality but a basic idea of learning to create a Netflix style interface. Watching videos isn't available because... 🏴‍☠️.",
-    "image": "/images/work/netflix.png",
+    "image": "/images/work/netflix.webp",
     "technologies": ["React", "SCSS", "API"],
     "link": "https://github.com/simplyratl/netflix-clone"
   }
