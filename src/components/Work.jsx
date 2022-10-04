@@ -11,17 +11,7 @@ const IntroductionWork = () => {
 
   useEffect(() => {
     setWorkCards(work);
-
-    return () => {
-      const showMore = () => {
-        setTimeout(() => {
-          showMoreRef.current.scrollIntoView({ block: "end", behavior: "smooth" });
-        }, 50);
-      };
-
-      showMore();
-    };
-  }, [itemsToShow]);
+  }, []);
 
   return (
     <section className="work max-w-[1020px] mx-auto mt-64 px-[20px] overflow-hidden">
@@ -36,7 +26,7 @@ const IntroductionWork = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.7 }}
-            className="grid gap-3 grid-12 items-center text-white"
+            className="grid gap-2 grid-12 items-center text-white"
             key={index}
           >
             <div
@@ -102,7 +92,7 @@ const IntroductionWork = () => {
             type="button"
             className="bg-red-600 px-4 py-2 rounded-md text-white mb-4 scroll-my-6 cursor-none"
             onClick={() => {
-              if (itemsToShow < work.length) setItemsToShow(itemsToShow + 1);
+              if (itemsToShow < work.length) setItemsToShow(work.length);
               else setItemsToShow(1);
             }}
             ref={showMoreRef}

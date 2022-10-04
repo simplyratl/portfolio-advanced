@@ -24,7 +24,7 @@ const Contact = () => {
           rel="noreferrer"
           className="gray primary-text-hover"
         >
-          <BsGithub className="inline-block relative -top-[2px]" size={18} />
+          <BsGithub className="inline-block relative -top-[3px]" size={18} />
           <span className="inline-block ml-2">Source Code</span>
         </a>
       </div>
