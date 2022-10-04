@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import work from "../json/work.json";
 import { motion } from "framer-motion";
+import { BsGithub } from "react-icons/bs";
 
 const IntroductionWork = () => {
   const [workCards, setWorkCards] = useState([]);
@@ -13,7 +14,9 @@ const IntroductionWork = () => {
 
     return () => {
       const showMore = () => {
-        showMoreRef.current.scrollIntoView({ block: "end", behavior: "smooth" });
+        setTimeout(() => {
+          showMoreRef.current.scrollIntoView({ block: "end", behavior: "smooth" });
+        }, 50);
       };
 
       showMore();
@@ -23,7 +26,7 @@ const IntroductionWork = () => {
   return (
     <section className="work max-w-[1020px] mx-auto mt-64 px-[20px] overflow-hidden">
       <h2 className="text-3xl text-heading mb-12 font-semibold font-header text-header">
-        <span>🏢</span> Some things I've built
+        Some things I've built
       </h2>
 
       <div className="flex flex-col gap-y-24 last:gap-y-12">
@@ -37,7 +40,7 @@ const IntroductionWork = () => {
             key={index}
           >
             <div
-              className={`w-full transition-all ease-in-out scale-95 duration-200 saturate-0 hover:saturate-100 hover:scale-100 ${
+              className={`w-full h-full transition-all ease-in-out scale-95 duration-200 saturate-0 hover:saturate-100 hover:scale-100 ${
                 index % 2 === 0 ? "grid-image-reverse" : "grid-image"
               }`}
             >
@@ -57,14 +60,14 @@ const IntroductionWork = () => {
             >
               <span className="text-sm text-red-400 font-mono">Featured Project</span>
               <h2 className="text-2xl font-semibold mb-6">
-                <a href={work.link} target="_blank" rel="noreferrer" className="white hover:text-red-600">
+                <a href={work.link} target="_blank" rel="noreferrer" className="white primary-text-hover">
                   {work.title}
                 </a>
               </h2>
               <div
                 className={`bubble ${
                   index % 2 === 0 && "reverse"
-                } relative bg-red-600 rounded-md px-6 py-4 whitespace-normal shadow-lg`}
+                } relative primary-bg rounded-md px-6 py-4 whitespace-normal shadow-lg`}
               >
                 {work.description}
               </div>
@@ -83,6 +86,16 @@ const IntroductionWork = () => {
             </div>
           </motion.div>
         ))}
+
+        {itemsToShow >= work.length && (
+          <a
+            href="https://github.com/simplyratl?tab=repositories"
+            className="text-color text-lg flex justify-center items-center gap-2 primary-text-hover"
+          >
+            <span>More projects are on my github.</span>
+            <BsGithub />
+          </a>
+        )}
 
         <div className="flex justify-center">
           <button

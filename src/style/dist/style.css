@@ -191,6 +191,14 @@ body {
   background-color: var(--secondary);
 }
 
+.primary-text-hover:hover {
+  color: var(--primary);
+}
+
+.secondary-text-hover:hover {
+  color: var(--secondary);
+}
+
 .scroll {
   fill: var(--white);
   stroke: var(--white);
