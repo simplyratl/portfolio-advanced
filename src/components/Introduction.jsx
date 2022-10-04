@@ -26,7 +26,7 @@ const Introduction = () => {
     <section className="mt-16 max-w-[600px] mx-auto text-center px-4">
       <h1 className="font-semibold text-3xl text-heading">Hello, I'm Nikica Raznatovic</h1>
       <p className="text-xl mb-4 text-heading-2">
-        I'm a {age} old Junior Frontend Developer from Montenegro. I am currently styding at FIT, University
+        I'm a {age} year old Junior Frontend Developer from Montenegro. I am currently studying at FIT, University
         of Mediteran in Podgorica.
       </p>
       <p className="text-color">Here are a few technologies I’ve been working with recently:</p>
