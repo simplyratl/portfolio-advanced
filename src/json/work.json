@@ -1,5 +1,13 @@
 [
   {
+    "title": "Multiplayer Chess",
+    "description": "Multiplayer chess game that enables 2 players to battle against each other in one of the most popular games ever. Starting a game takes only 2 clicks. You can send an invite code to your friends to play against each other. Simple as that.",
+    "image": "/images/work/chess.webp",
+    "technologies": ["React", "Node.js ?", "Firebase", "Heroku"],
+    "link": "/",
+    "worked_on": true
+  },
+  {
     "title": "Beatstore",
     "description": "A sophisticated project built with React js on the frontend and Node js on backend. Firebase is used to store audio and photos, and MongoDB is utilized to store JSON about beats.",
     "image": "/images/work/beatstore.webp",

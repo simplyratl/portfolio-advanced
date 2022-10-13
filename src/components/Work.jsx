@@ -34,7 +34,12 @@ const IntroductionWork = () => {
                 index % 2 === 0 ? "grid-image-reverse" : "grid-image"
               }`}
             >
-              <a href={work.link} target="_blank" rel="noreferrer">
+              <a
+                href={work.link}
+                target="_blank"
+                rel="noreferrer"
+                className={`${work.worked_on && "pointer-events-none"}`}
+              >
                 <img
                   src={work.image}
                   alt={work.title}
@@ -45,12 +50,24 @@ const IntroductionWork = () => {
 
             <div
               className={`relative ${
-                index % 2 === 0 ? "grid-text-reverse text-left" : "grid-text text-right"
+                index % 2 === 0
+                  ? "grid-text-reverse text-left"
+                  : "grid-text text-right"
               }`}
             >
-              <span className="text-sm text-red-400 font-mono">Featured Project</span>
+              <span className="text-md text-red-400 font-mono">
+                {work.worked_on ? "Not relased yet" : "Featured Project"}
+              </span>
+
               <h2 className="text-2xl font-semibold mb-6">
-                <a href={work.link} target="_blank" rel="noreferrer" className="white primary-text-hover">
+                <a
+                  href={work.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`white primary-text-hover ${
+                    work.worked_on && "pointer-events-none"
+                  }`}
+                >
                   {work.title}
                 </a>
               </h2>
