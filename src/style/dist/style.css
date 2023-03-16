@@ -79,6 +79,52 @@
   margin-right: -24px;
 }
 
+.fancy {
+  width: fit-content;
+}
+.fancy .letter {
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+}
+.fancy:hover .letter {
+  color: red !important;
+  position: relative;
+  transition: 0.4s ease;
+}
+.fancy:hover .letter:hover {
+  transform: scale(1.2);
+}
+.fancy:hover .letter:nth-child(1) {
+  transform: translate(-2%, -60%) rotate(12deg);
+}
+.fancy:hover .letter:nth-child(2) {
+  transform: translate(8%, -32%) rotate(10deg);
+}
+.fancy:hover .letter:nth-child(3) {
+  transform: translate(8%, 32%) rotate(-8deg);
+}
+.fancy:hover .letter:nth-child(4) {
+  transform: translate(4%, 8%) rotate(2deg);
+}
+.fancy:hover .letter:nth-child(5) {
+  transform: translate(4%, -12%) rotate(-12deg);
+}
+.fancy:hover .letter:nth-child(6) {
+  transform: translate(12%, -2%) rotate(-12deg);
+}
+.fancy:hover .letter:nth-child(7) {
+  transform: translate(12%, -2%) rotate(12deg);
+}
+.fancy:hover .letter:nth-child(8) {
+  transform: translate(4%, -8%) rotate(12deg);
+}
+.fancy:hover .letter:nth-child(9) {
+  transform: translate(12%, -16%) rotate(12deg);
+}
+.fancy:hover .letter:nth-child(10) {
+  transform: translate(16%, 4%) rotate(24deg);
+}
+
 .cursor {
   --cursor-color: #81807f;
   background-color: var(--cursor-color);
