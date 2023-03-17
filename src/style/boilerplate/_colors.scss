@@ -1,92 +1,92 @@
 .dark {
-  --background: #181818;
-  --text-color: #81807f;
-  --text-heading: #616161;
-  --text-heading-2: #a8a6a5;
-  --white: #fff;
-  --gray: #949494;
-  --primary: #d33333;
-  --secondary: #910e0e;
+	--background: #181818;
+	--text-color: #81807f;
+	--text-heading: #616161;
+	--text-heading-2: #a8a6a5;
+	--white: #fff;
+	--gray: #949494;
+	--primary: #d33333;
+	--secondary: #910e0e;
 }
 
 .light {
-  --background: #fff;
-  --text-color: #3a3a3a;
-  --text-heading: #1f2223;
-  --text-heading-2: #57595a;
-  --white: #171717;
-  --gray: #696969;
-  --primary: #d33333;
-  --secondary: #910e0e;
+	--background: #fff;
+	--text-color: #3a3a3a;
+	--text-heading: #1f2223;
+	--text-heading-2: #57595a;
+	--white: #171717;
+	--gray: #696969;
+	--primary: #d33333;
+	--secondary: #910e0e;
 }
 
 .background {
-  background-color: var(--background);
+	background-color: var(--background);
 }
 
 .background-white {
-  background-color: #000;
+	background-color: #000;
 }
 
 .text-color {
-  color: var(--text-color);
+	color: var(--text-color);
 }
 
 .text-heading {
-  color: var(--text-heading);
+	color: var(--text-heading);
 }
 
 .text-heading-2 {
-  color: var(--text-heading-2);
+	color: var(--text-heading-2);
 }
 
 .white {
-  color: var(--white);
+	color: var(--white);
 }
 
 .gray {
-  color: var(--gray);
+	color: var(--gray);
 }
 
 .primary-bg {
-  background-color: var(--primary) !important;
+	background-color: var(--primary) !important;
 }
 
 .primary-text {
-  color: var(--primary) !important;
+	color: var(--primary) !important;
 }
 
 .secondary-bg {
-  background-color: var(--secondary) !important;
+	background-color: var(--secondary) !important;
 }
 
 .secondary-text {
-  color: var(--secondary) !important;
+	color: var(--secondary) !important;
 }
 
 .primary-hover {
-  &:hover {
-    background-color: var(--primary);
-  }
+	&:hover {
+		background-color: var(--primary);
+	}
 }
 .secondary-hover {
-  &:hover {
-    background-color: var(--secondary);
-  }
+	&:hover {
+		background-color: var(--secondary);
+	}
 }
 
 .primary-text-hover {
-  &:hover {
-    color: var(--primary);
-  }
+	&:hover {
+		color: var(--primary);
+	}
 }
 .secondary-text-hover {
-  &:hover {
-    color: var(--secondary);
-  }
+	&:hover {
+		color: var(--secondary);
+	}
 }
 
 .scroll {
-  fill: var(--white);
-  stroke: var(--white);
+	fill: var(--white);
+	stroke: var(--white);
 }

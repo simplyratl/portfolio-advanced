@@ -1,38 +1,46 @@
 [
-  {
-    "title": "Multiplayer Chess",
-    "description": "Multiplayer chess game that enables 2 players to battle against each other in one of the most popular games ever. Starting a game takes only 2 clicks. You can send an invite code to your friends to play against each other. Simple as that.",
-    "image": "/images/work/chess.webp",
-    "technologies": ["React", "Node.js ?", "Firebase", "Heroku"],
-    "link": "/",
-    "worked_on": true
-  },
-  {
-    "title": "Beatstore",
-    "description": "A sophisticated project built with React js on the frontend and Node js on backend. Firebase is used to store audio and photos, and MongoDB is utilized to store JSON about beats.",
-    "image": "/images/work/beatstore.webp",
-    "technologies": ["React", "Node.js", "MongoDB", "Firebase", "Heroku"],
-    "link": "https://ratlbeatz.netlify.app/"
-  },
-  {
-    "title": "IOS16 Preview Clone",
-    "description": "Next level animation is expected by Apple, so I tried to recreate it in a best way I can. It's not the full preview, just a few sections, but it's close resembly to the original site.",
-    "image": "/images/work/apple.webp",
-    "technologies": ["React", "SCSS", "GSAP"],
-    "link": "https://ios16-clone.netlify.app/"
-  },
-  {
-    "title": "2048",
-    "description": "Popular classic game 2048, coded entirely in vanilla Javascript. But not in colors you are used to, but in a new more modern design and scheme. The goal of the game is to reach 2048 block, but it doesn't end there. You can continue playing and try to reach your newest high score!",
-    "image": "/images/work/2048.webp",
-    "technologies": ["HTML", "Javascript", "SCSS"],
-    "link": "https://2048-modern.netlify.app/"
-  },
-  {
-    "title": "Netflix Clone",
-    "description": "What more to say? Netflix clone made using React js. The main goal wasn't a functionality but a basic idea of learning to create a Netflix style interface. Watching videos isn't available because... 🏴‍☠️.",
-    "image": "/images/work/netflix.webp",
-    "technologies": ["React", "SCSS", "API"],
-    "link": "https://github.com/simplyratl/netflix-clone"
-  }
+	{
+		"title": "NLB Amanet Knjige",
+		"description": "Digitalization of pawnshop books in NLB bank involves converting physical books into a digital format, making it easier for workers to manage data and increasing efficiency. This process uses React for the web application and React Native for the mobile application. The web application is used for viewing and managing the history of transferred items, adding routes and teams. The mobile application is used for managing and scanning QR codes on items for task completion, with a focus on security. Overall, this digitalization project streamlines the management process, enhances operational efficiency, and improves security for the workers handling the items.",
+		"image": "/images/work/nlb.webp",
+		"technologies": ["React", "React Native", "Bootstrap"],
+		"link": "/",
+		"worked_on": false
+	},
+	{
+		"title": "Multiplayer Chess",
+		"description": "Multiplayer chess game that enables 2 players to battle against each other in one of the most popular games ever. Starting a game takes only 2 clicks. You can send an invite code to your friends to play against each other. Simple as that.",
+		"image": "/images/work/chess.webp",
+		"technologies": ["React", "Node.js ?", "Firebase", "Heroku"],
+		"link": "/",
+		"worked_on": true
+	},
+	{
+		"title": "Beatstore",
+		"description": "A sophisticated project built with React js on the frontend and Node js on backend. Firebase is used to store audio and photos, and MongoDB is utilized to store JSON about beats.",
+		"image": "/images/work/beatstore.webp",
+		"technologies": ["React", "Node.js", "MongoDB", "Firebase", "Heroku"],
+		"link": "https://ratlbeatz.netlify.app/"
+	},
+	{
+		"title": "IOS16 Preview Clone",
+		"description": "Next level animation is expected by Apple, so I tried to recreate it in a best way I can. It's not the full preview, just a few sections, but it's close resembly to the original site.",
+		"image": "/images/work/apple.webp",
+		"technologies": ["React", "SCSS", "GSAP"],
+		"link": "https://ios16-clone.netlify.app/"
+	},
+	{
+		"title": "2048",
+		"description": "Popular classic game 2048, coded entirely in vanilla Javascript. But not in colors you are used to, but in a new more modern design and scheme. The goal of the game is to reach 2048 block, but it doesn't end there. You can continue playing and try to reach your newest high score!",
+		"image": "/images/work/2048.webp",
+		"technologies": ["HTML", "Javascript", "SCSS"],
+		"link": "https://2048-modern.netlify.app/"
+	},
+	{
+		"title": "Netflix Clone",
+		"description": "What more to say? Netflix clone made using React js. The main goal wasn't a functionality but a basic idea of learning to create a Netflix style interface. Watching videos isn't available because... 🏴‍☠️.",
+		"image": "/images/work/netflix.webp",
+		"technologies": ["React", "SCSS", "API"],
+		"link": "https://github.com/simplyratl/netflix-clone"
+	}
 ]

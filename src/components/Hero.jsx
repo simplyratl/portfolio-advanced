@@ -1,4 +1,11 @@
-import React, { Suspense, useContext, useRef, useState } from "react";
+import React, {
+	memo,
+	Suspense,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 import Lotie from "lottie-react";
 import scrollAnimation from "../assets/lottie/scroll.json";
 
@@ -24,6 +31,7 @@ import {
 import * as THREE from "three";
 import Navbar from "./Navbar";
 import { LightModeContext } from "../context/lightModeContext/LightModeContext";
+import { techStack } from "../utils/techStack";
 
 export const Light = () => {
 	const [mousePos, setMousePos] = useState({
@@ -48,19 +56,49 @@ export const Light = () => {
 };
 
 const Hero = () => {
+	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
+
+	const firstName = useRef(null);
+	const lastName = useRef(null);
+
 	const { lightMode } = useContext(LightModeContext);
 	const [effects, enableEffects] = useState(false);
 	const [disableEffects, handleDisableEffects] = useState(false);
 
-	const generateTextName = (name) => {
-		const arrayName = name.split("");
+	const generateTextName = (name, ref) => {
+		let iteration = 0;
 
-		return arrayName.map((letter, index) => (
-			<span key={index} className="letter">
-				{letter}
-			</span>
-		));
+		const interval = setInterval(() => {
+			ref.current.textContent = ref.current.textContent
+				.split("")
+				.map((letter, index) => {
+					if (index < iteration) {
+						return name[index];
+					}
+
+					return letters[Math.floor(Math.random() * 26)].toUpperCase();
+				})
+				.join("")
+				.toUpperCase();
+
+			if (iteration >= name.length) {
+				clearInterval(interval);
+				ref.current.classList.remove("highlight");
+			} else {
+				ref.current.classList.add("highlight");
+			}
+
+			iteration += 1 / 4;
+		}, 30);
 	};
+
+	useEffect(() => {
+		firstName.current.textContent = "NIKICA";
+	}, []);
+
+	useEffect(() => {
+		lastName.current.textContent = "RAŽNATOVIĆ";
+	}, []);
 
 	const MainSphere = ({ material }) => {
 		const main = useRef();
@@ -215,7 +253,7 @@ const Hero = () => {
 	};
 
 	return (
-		<section className="h-[100vh] relative">
+		<section className="h-[100vh] relative" id="home">
 			<Navbar
 				effects={effects}
 				enableEffects={enableEffects}
@@ -272,15 +310,42 @@ const Hero = () => {
 					/>
 				)}
 			</Canvas>
-			<div className="absolute left-8 translate-y-2/4 select-none inset-y-3/4 lg:inset-y-1/2">
-				<div className="text-color font-bold fancy text-6xl lg:text-9xl">
-					{generateTextName("Nikica")}
-				</div>
-				<div className="text-color font-bold fancy text-6xl lg:text-9xl">
-					{generateTextName("Ražnatović")}
+			<div className="absolute sm:left-8 translate-y-2/4 select-none inset-y-3/4 lg:inset-y-1/2 z-10 left-0 w-full sm:w-auto px-5 sm:px-0">
+				<div
+					className="text-color font-bold fancy text-[12vw] sm:text-6xl lg:text-9xl sm:w-fit text-center h-[12vw] sm:h-auto"
+					ref={firstName}
+					onMouseEnter={() => generateTextName("Nikica", firstName)}
+				></div>
+				<div
+					className="text-color font-bold fancy text-[12vw] sm:text-6xl lg:text-9xl sm:w-fit text-center"
+					ref={lastName}
+					onMouseEnter={() => generateTextName("Ražnatović", lastName)}
+				></div>
+
+				<div className="flex flex-wrap items-center gap-10 mt-4 z-10 md:flex-nowrap justify-center sm:justify-start">
+					<div className="hidden md:grid border-r-2 border-gray pr-4 h-16 place-content-center">
+						<p className="text-color font-medium text-xl hidden md:block">
+							Tech Stack
+						</p>
+					</div>
+
+					<div className="flex items-center gap-4">
+						{techStack.map((tech, index) => (
+							<div
+								className="w-[12vw] sm:p-2 sm:w-16 aspect-square bg-gray p-3 rounded-full overflow-hidden hover:bg-primary"
+								key={index}
+							>
+								<img
+									className="w-full h-full object-contain"
+									src={tech.image}
+									alt="logo"
+								/>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
-			<div className="absolute right-4 bottom-6 w-16 h-16 z-10 pointer-events-none background-white rounded-full">
+			<div className="hidden sm:visible absolute right-4 bottom-6 w-16 h-16 z-10 pointer-events-none background-white rounded-full">
 				<Lotie animationData={scrollAnimation} />
 			</div>
 			<div className="fade absolute -bottom-8 w-full h-[200px]"></div>
@@ -288,4 +353,4 @@ const Hero = () => {
 	);
 };
 
-export default Hero;
+export default memo(Hero);
