@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 
 const HeaderMenu = () => {
-	const nav = ["Home", "About", "Projects", "Contant"];
+	const nav = ["Home", "About", "Projects", "Contact"];
 
 	return (
 		<motion.div

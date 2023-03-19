@@ -282,7 +282,13 @@ const Hero = () => {
 					enablePan={false}
 					enableRotate={false}
 				/>
-				<Suspense fallback={<Html center>Loading.</Html>}>
+				<Suspense
+					fallback={
+						<Html center>
+							<p className="text-color">Loading...</p>
+						</Html>
+					}
+				>
 					<Rig>
 						<Stars fade count={100} />
 						<Scene />
